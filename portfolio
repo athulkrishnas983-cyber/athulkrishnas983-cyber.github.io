@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athulkrishna Sailandrakumar — Aerospace Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --bg:#050810;
+    --bg-alt:#080d1a;
+    --panel:#0d1424;
+    --panel-2:#111a2e;
+    --border:rgba(0,212,255,.14);
+    --border-strong:rgba(0,212,255,.32);
+    --fg:#e8eef5;
+    --fg-dim:#aeb8c8;
+    --muted:#6b7a8f;
+    --accent:#ff6b1a;
+    --accent-2:#00d4ff;
+    --accent-3:#ffd166;
+    --danger:#ff3b6b;
+    --grid:rgba(0,212,255,.05);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  #starfield{position:fixed;inset:0;z-index:0;pointer-events:none}
+  body::before{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(var(--grid) 1px,transparent 1px) 0 0/60px 60px,
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/60px 60px,
+      radial-gradient(ellipse at 20% 0%,rgba(255,107,26,.10),transparent 50%),
+      radial-gradient(ellipse at 80% 100%,rgba(0,212,255,.08),transparent 50%);
+  }
+  body::after{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse at center,transparent 0%,var(--bg) 80%);
+  }
+
+  .cursor-glow{
+    position:fixed;width:500px;height:500px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,212,255,.07),transparent 60%);
+    pointer-events:none;z-index:1;transform:translate(-50%,-50%);
+    transition:opacity .3s;mix-blend-mode:screen;
+  }
+  @media (hover: none) and (pointer: coarse) {
+    .cursor-glow { display: none; }
+  }
+
+  main,header,footer,section{position:relative;z-index:2}
+  .container{max-width:1280px;margin:0 auto;padding:0 32px}
+  
+  /* --- Navigation --- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    background:rgba(5,8,16,.6);
+    border-bottom:1px solid var(--border);
+    transition:all .3s;
+  }
+  .nav.scrolled{background:rgba(5,8,16,.95);border-bottom-color:var(--border-strong)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:15px;letter-spacing:.05em;
+    color:var(--fg);text-decoration:none;
+  }
+  .logo-mark{
+    width:32px;height:32px;display:grid;place-items:center;
+    border:1px solid var(--accent-2);border-radius:6px;
+    color:var(--accent-2);font-size:14px;
+    background:rgba(0,212,255,.06);position:relative;
+  }
+  .logo-mark::after{
+    content:'';position:absolute;inset:-3px;border-radius:8px;
+    border:1px solid rgba(0,212,255,.2);animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+  .nav-links{display:flex;gap:6px;align-items:center}
+  .nav-links a{
+    color:var(--fg-dim);text-decoration:none;font-size:13px;
+    font-weight:500;padding:8px 14px;border-radius:6px;
+    font-family:'JetBrains Mono',monospace;
+    transition:all .2s;letter-spacing:.02em;
+  }
+  .nav-links a:hover{color:var(--accent-2);background:rgba(0,212,255,.06)}
+  .nav-cta{border:1px solid var(--accent);color:var(--accent)!important;padding:8px 16px!important;border-radius:6px}
+  .nav-cta:hover{background:var(--accent);color:#000!important}
+  
+  .menu-btn{display:none;background:none;border:1px solid var(--border);color:var(--fg);width:40px;height:40px;border-radius:6px;cursor:pointer;font-size:18px}
+  
+  @media(max-width:900px){
+    .container{padding:0 20px}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-links.open{
+      display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;
+      background:rgba(5,8,16,.98);padding:16px 20px;border-bottom:1px solid var(--border);gap:4px;
+      max-height:calc(100vh - 64px);overflow-y:auto;
+    }
+    .nav-links.open a{padding:12px 16px;width:100%;border-radius:6px}
+    .nav-links.open a.nav-cta{text-align:center;margin-top:8px}
+  }
+
+  /* --- Hero --- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 60px;position:relative;overflow:hidden}
+  .hero-bg{
+    position:absolute;inset:0;z-index:-1;
+    background-image:url('https://z-cdn-media.chatglm.cn/files/73cdc608-d8a7-4fb4-aa66-cd6f1b3b129c.jpg?auth_key=1887074370-6fed52ab458e4df3a2996ba8ad7d40af-0-12b391b8c6998fc9ff9a2d11f18f6a7d');
+    background-size:cover;background-position:center;opacity:.35;filter:saturate(.7) contrast(1.1);
+  }
+  .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,8,16,.4) 0%,var(--bg) 90%)}
+
+  .hero-meta{
+    display:flex;gap:24px;flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace;font-size:11px;
+    color:var(--accent-2);letter-spacing:.15em;
+    margin-bottom:32px;text-transform:uppercase;
+  }
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-meta .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 10px var(--accent-2);animation:pulse 1.6s infinite}
+  .hero-meta .dot.live{background:var(--accent);box-shadow:0 0 10px var(--accent)}
+
+  .hero-title{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(36px, 9vw, 96px);line-height:.92;
+    letter-spacing:-.03em;margin-bottom:24px;
+  }
+  .hero-title .line{display:block;overflow:hidden}
+  .hero-title .line span{display:inline-block;animation:slideUp 1s cubic-bezier(.16,1,.3,1) both}
+  .hero-title .line:nth-child(2) span{animation-delay:.15s}
+  .hero-title .accent{color:var(--accent);font-style:italic;font-weight:300}
+  @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+
+  .hero-sub{max-width:680px;font-size:18px;color:var(--fg-dim);line-height:1.6;margin-bottom:40px;animation:fadeIn 1.2s .4s both}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;animation:fadeIn 1.2s .6s both}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 28px;border-radius:6px;
+    font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;
+    text-decoration:none;letter-spacing:.04em;transition:all .25s;cursor:pointer;border:none;text-transform:uppercase;
+  }
+  .btn-primary{background:var(--accent);color:#0a0a0a;box-shadow:0 0 0 0 rgba(255,107,26,.5)}
+  .btn-primary:hover{box-shadow:0 0 30px rgba(255,107,26,.5);transform:translateY(-2px)}
+  .btn-secondary{background:transparent;color:var(--fg);border:1px solid var(--border-strong)}
+  .btn-secondary:hover{border-color:var(--accent-2);color:var(--accent-2)}
+
+  .hud-corner{position:absolute;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-2);opacity:.5;letter-spacing:.1em;pointer-events:none}
+  .hud-tl{top:80px;left:32px}
+  .hud-bl{bottom:24px;left:32px}
+  .hud-br{bottom:24px;right:32px;text-align:right}
+  .hud-corner::before{content:'';display:block;width:30px;height:1px;background:var(--accent-2);margin-bottom:6px;opacity:.6}
+  .hud-br::before{margin-left:auto}
+  @media(max-width:768px){.hud-corner{display:none}}
+
+  /* --- Sections --- */
+  section{padding:120px 0;position:relative}
+  .section-head{margin-bottom:64px}
+  .section-tag{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px}
+  .section-tag::before{content:'';width:24px;height:1px;background:var(--accent-2)}
+  .section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px, 6vw, 64px);font-weight:700;line-height:1;letter-spacing:-.02em;margin-bottom:16px}
+  .section-title .num{font-family:'JetBrains Mono',monospace;font-size:.4em;color:var(--muted);font-weight:400;vertical-align:top;margin-right:16px;letter-spacing:0}
+  .section-desc{color:var(--fg-dim);max-width:680px;font-size:16px}
+
+  /* --- About --- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:start}
+  .about-text p{margin-bottom:18px;color:var(--fg-dim);font-size:16px}
+  .about-text p strong{color:var(--fg);font-weight:600}
+  .about-text p .hl{color:var(--accent-2)}
+
+  .telemetry{border:1px solid var(--border);background:linear-gradient(180deg,var(--panel),var(--bg));border-radius:8px;padding:24px;font-family:'JetBrains Mono',monospace;font-size:13px;position:relative;overflow:hidden}
+  .telemetry::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent-2),transparent);animation:scan 3s linear infinite}
+  @keyframes scan{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+  .telemetry-head{display:flex;justify-content:space-between;color:var(--accent-2);font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:20px;padding-bottom:12px;border-bottom:1px dashed var(--border)}
+  .telemetry-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.04);gap:16px}
+  .telemetry-row:last-child{border:0}
+  .telemetry-row .k{color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .telemetry-row .v{color:var(--fg);font-weight:600;text-align:right}
+  .telemetry-row .v.ok{color:var(--accent-3)}
+  .telemetry-row .v.active{color:var(--accent-2)}
+
+  /* --- Timeline --- */
+  .timeline{position:relative;padding-left:32px}
+  .timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--accent-2),var(--accent),transparent)}
+  .timeline-item{position:relative;padding-bottom:48px}
+  .timeline-item:last-child{padding-bottom:0}
+  .timeline-item::before{content:'';position:absolute;left:-32px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--bg);border:2px solid var(--accent-2);box-shadow:0 0 12px rgba(0,212,255,.5)}
+  .timeline-item.now::before{border-color:var(--accent);box-shadow:0 0 12px rgba(255,107,26,.6)}
+  .timeline-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);letter-spacing:.1em;margin-bottom:6px;text-transform:uppercase}
+  .timeline-role{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:var(--fg);margin-bottom:4px}
+  .timeline-org{font-size:13px;color:var(--fg-dim);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .timeline-org i{color:var(--accent);font-size:11px}
+  .timeline-desc{color:var(--fg-dim);font-size:14px}
+  .timeline-desc ul{list-style:none;padding-left:0}
+  .timeline-desc li{padding:4px 0 4px 18px;position:relative}
+  .timeline-desc li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:10px;top:6px}
+
+  /* --- Patents --- */
+  .patents-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .patent-card{border:1px solid var(--border);background:linear-gradient(135deg,var(--panel) 0%,var(--bg) 100%);padding:32px;border-radius:8px;position:relative;overflow:hidden;transition:all .3s}
+  .patent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+  .patent-card:hover{border-color:var(--border-strong);transform:translateY(-4px)}
+  .patent-card:hover::before{transform:scaleX(1)}
+  .patent-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;gap:16px}
+  .patent-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);letter-spacing:.05em;padding:4px 10px;border:1px solid var(--border-strong);border-radius:4px;background:rgba(0,212,255,.05);text-align:center;white-space:nowrap}
+  .patent-icon{width:48px;height:48px;border-radius:8px;background:rgba(255,107,26,.1);border:1px solid rgba(255,107,26,.3);display:grid;place-items:center;color:var(--accent);font-size:20px;flex-shrink:0}
+  .patent-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;line-height:1.3;margin-bottom:12px;color:var(--fg)}
+  .patent-desc{color:var(--fg-dim);font-size:14px}
+
+  /* --- Projects --- */
+  .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .project-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--panel);transition:all .3s;cursor:pointer}
+  .project-card:hover{border-color:var(--accent-2);transform:translateY(-4px)}
+  .project-img{aspect-ratio:16/10;background-size:cover;background-position:center;position:relative;border-bottom:1px solid var(--border)}
+  .project-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(5,8,16,.95) 100%)}
+  .project-year{position:absolute;top:16px;right:16px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;background:rgba(5,8,16,.8);border:1px solid var(--border-strong);border-radius:4px;color:var(--accent-2);letter-spacing:.05em;backdrop-filter:blur(6px)}
+  .project-body{padding:24px}
+  .project-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin-bottom:8px;color:var(--fg)}
+  .project-cat{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
+  .project-desc{color:var(--fg-dim);font-size:14px;line-height:1.55}
+
+  /* --- Skills --- */
+  .skills-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .skill-block-head{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+  .skill-block-head i{width:36px;height:36px;display:grid;place-items:center;background:rgba(0,212,255,.08);border:1px solid var(--border-strong);color:var(--accent-2);border-radius:6px;font-size:14px}
+  .skill-block-head h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em}
+  .skill-list{display:flex;flex-wrap:wrap;gap:8px}
+  .skill-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:6px;border:1px solid var(--border);background:rgba(13,20,36,.6);font-size:13px;color:var(--fg-dim);transition:all .2s;cursor:default;font-family:'JetBrains Mono',monospace}
+  .skill-chip:hover{border-color:var(--accent-2);color:var(--accent-2);background:rgba(0,212,255,.06);transform:translateY(-2px)}
+  .skill-chip .lvl{font-size:9px;color:var(--accent);letter-spacing:.1em}
+
+  /* --- Publications --- */
+  .pub-list{display:flex;flex-direction:column;gap:16px}
+  .pub-card{display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:center;padding:24px;border:1px solid var(--border);border-radius:8px;background:var(--panel);transition:all .25s;text-decoration:none;color:inherit}
+  .pub-card:hover{border-color:var(--accent);background:linear-gradient(90deg,var(--panel),rgba(255,107,26,.04));transform:translateX(4px)}
+  .pub-year{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--accent-2);line-height:1}
+  .pub-year span{display:block;font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-weight:400;letter-spacing:.1em;margin-top:4px}
+  .pub-title{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16px;line-height:1.4;margin-bottom:6px;color:var(--fg)}
+  .pub-venue{font-size:12px;color:var(--fg-dim);font-family:'JetBrains Mono',monospace}
+  .pub-venue i{color:var(--accent);margin-right:6px}
+  .pub-action{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;text-align:right}
+
+  /* --- Blog --- */
+  .blog-empty{
+    border:1px dashed var(--border-strong);border-radius:10px;padding:60px 20px;
+    text-align:center;background:linear-gradient(135deg,rgba(0,212,255,.03),rgba(255,107,26,.03));
+  }
+  .blog-empty i{font-size:32px;color:var(--accent-2);margin-bottom:16px;opacity:.7;}
+  .blog-empty h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;margin-bottom:8px;}
+  .blog-empty p{color:var(--fg-dim);font-size:14px;max-width:400px;margin:0 auto;}
+
+  /* --- Gallery --- */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+  .gallery-item{border-radius:8px;overflow:hidden;position:relative;cursor:pointer;border:1px solid var(--border);background-size:cover;background-position:center;transition:all .3s}
+  .gallery-item:hover{transform:scale(1.02);border-color:var(--accent-2);z-index:2}
+  .gallery-item.big{grid-column:span 2;grid-row:span 2}
+  .gallery-item.wide{grid-column:span 2}
+  .gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(5,8,16,.9));opacity:0;transition:opacity .3s}
+  .gallery-item:hover::after{opacity:1}
+  .gallery-cap{position:absolute;bottom:12px;left:12px;right:12px;z-index:2;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--fg);letter-spacing:.05em;opacity:0;transform:translateY(10px);transition:all .3s}
+  .gallery-item:hover .gallery-cap{opacity:1;transform:translateY(0)}
+  .gallery-cap .tag{color:var(--accent-2);font-size:9px;letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:4px}
+
+  /* --- Lightbox --- */
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:40px;backdrop-filter:blur(8px)}
+  .lightbox.open{display:flex;animation:fadeIn .3s}
+  .lightbox img{max-width:90vw;max-height:85vh;border-radius:8px;border:1px solid var(--border-strong)}
+  .lightbox-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border);color:var(--fg);cursor:pointer;font-size:18px;display:grid;place-items:center;transition:all .2s;z-index:1001}
+  .lightbox-close:hover{background:var(--accent);color:#000}
+  .lightbox-cap{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent-2);letter-spacing:.1em;text-align:center;width:90%}
+
+  /* --- Contact --- */
+  .contact{padding:80px 0;border-top:1px solid var(--border);background:linear-gradient(180deg,transparent,rgba(0,212,255,.03))}
+  .contact-list{display:flex;flex-direction:column;gap:14px;margin-top:40px}
+  .contact-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--fg);transition:all .2s;background:var(--panel)}
+  .contact-item:hover{border-color:var(--accent);transform:translateX(4px)}
+  .contact-item i{width:36px;height:36px;display:grid;place-items:center;background:rgba(255,107,26,.1);border-radius:6px;color:var(--accent);font-size:14px;flex-shrink:0}
+  .contact-item .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:2px}
+  .contact-item .val{font-size:14px;color:var(--fg);word-break:break-all}
+
+  footer{padding:32px 0;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.05em;text-align:center}
+  .footer-inner{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:16px}
+
+  /* --- Marquee --- */
+  .marquee{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;background:rgba(0,212,255,.02);position:relative;z-index:2}
+  .marquee-track{display:flex;gap:48px;animation:scroll 40s linear infinite;white-space:nowrap;width:max-content}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .marquee-item{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;letter-spacing:.05em;color:var(--fg-dim);text-transform:uppercase;display:inline-flex;align-items:center;gap:14px}
+  .marquee-item i{color:var(--accent);font-size:8px}
+  .marquee-item.alt{color:var(--accent-2)}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  ::selection{background:var(--accent);color:#000}
+  ::-webkit-scrollbar{width:10px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--panel-2);border-radius:5px}
+  ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+
+  /* ===================================
+      MOBILE RESPONSIVE BREAKPOINTS
+  =================================== */
+
+  @media (max-width: 900px) {
+    section { padding: 80px 0; }
+    .section-head { margin-bottom: 40px; }
+    
+    .about-grid,
+    .skills-wrap { grid-template-columns: 1fr; gap: 32px; }
+    
+    .patents-grid,
+    .projects-grid { grid-template-columns: 1fr; }
+    
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; gap: 12px; }
+    .gallery-item.big { grid-column: span 2; grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+    
+    .pub-card { grid-template-columns: 60px 1fr; gap: 16px; padding: 20px; }
+    .pub-action { display: none; }
+  }
+
+  @media (max-width: 500px) {
+    .container { padding: 0 16px; }
+    
+    .hero { padding: 100px 0 40px; }
+    .hero-sub { font-size: 16px; }
+    .btn { padding: 12px 20px; font-size: 12px; width: 100%; justify-content: center; }
+    
+    .section-title { font-size: 32px; }
+    .section-desc { font-size: 14px; }
+    
+    .telemetry { padding: 18px; font-size: 12px; }
+    .telemetry-row .k { font-size: 10px; }
+    .telemetry-row .v { font-size: 12px; }
+    
+    .timeline { padding-left: 24px; }
+    .timeline-item::before { left: -24px; width: 14px; height: 14px; }
+    .timeline-role { font-size: 18px; }
+    
+    .patent-card { padding: 24px; }
+    .patent-title { font-size: 19px; }
+    
+    .project-body { padding: 20px; }
+    .project-title { font-size: 18px; }
+    
+    .pub-card { grid-template-columns: 50px 1fr; padding: 16px; }
+    .pub-year { font-size: 22px; }
+    .pub-title { font-size: 14px; }
+    
+    .blog-empty { padding: 40px 16px; }
+    
+    .lightbox { padding: 10px; }
+    .lightbox-close { top: 12px; right: 12px; width: 38px; height: 38px; }
+    .lightbox-cap { font-size: 11px; bottom: 12px; }
+    
+    .contact-item { padding: 12px 14px; }
+    .contact-item i { width: 32px; height: 32px; font-size: 13px; }
+    
+    .marquee-item { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="starfield"></canvas>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#hero" class="logo">
+      <span class="logo-mark"><i class="fa-solid fa-rocket"></i></span>
+      <span>ATHULKRISHNA S.</span>
+    </a>
+    <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">01 About</a>
+      <a href="#experience">02 Experience</a>
+      <a href="#patents">03 Patents</a>
+      <a href="#projects">04 Projects</a>
+      <a href="#skills">05 Skills</a>
+      <a href="#publications">06 Publications</a>
+      <a href="#blog">07 Blog</a>
+      <a href="#gallery">08 Gallery</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <span class="hud-corner hud-tl">LAT 44.4941° N<br>LON 11.3428° E</span>
+  <span class="hud-corner hud-bl">FRAME: J2000</span>
+  <span class="hud-corner hud-br" id="clockUTC">UTC --:--:--</span>
+
+  <div class="container">
+    <div class="hero-meta">
+      <span><i class="dot live"></i> STATUS: ACTIVE</span>
+      <span><i class="dot"></i> AEROSPACE ENGINEER</span>
+      <span><i class="dot"></i> BOLOGNA · ITALY</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line"><span>ATHULKRISHNA</span></span>
+      <span class="line"><span>SAILANDRA<span class="accent">KUMAR</span></span></span>
+    </h1>
+
+    <p class="hero-sub">
+      Aerospace engineer building, testing, and breaking real hardware — from solid rocket motors and nanosatellite structures to biodegradable composites and UAV systems. Currently completing an MSc at the University of Bologna, researching water as a propellant for electric propulsion.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">
+        <i class="fa-solid fa-satellite-dish"></i> View Projects
+      </a>
+      <a href="#contact" class="btn btn-secondary">
+        <i class="fa-solid fa-paper-plane"></i> Contact
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">PROPULSION <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">COMPOSITES <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item">UAV SYSTEMS <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">CFD ANALYSIS <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item">SOLID ROCKET MOTORS <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">NANOSATELLITE STRUCTURES <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item">MECHANISM DESIGN <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">PLASMA PHYSICS <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item">PROPULSION <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">COMPOSITES <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item">UAV SYSTEMS <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">CFD ANALYSIS <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item">SOLID ROCKET MOTORS <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">NANOSATELLITE STRUCTURES <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item">MECHANISM DESIGN <i class="fa-solid fa-circle"></i></span>
+    <span class="marquee-item alt">PLASMA PHYSICS <i class="fa-solid fa-circle"></i></span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 01 — Identity</div>
+      <h2 class="section-title"><span class="num">01</span>About the engineer</h2>
+      <p class="section-desc">An MSc student in aerospace engineering who would rather construct and test things than leave them as models on a screen.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>My project work spans <strong>structures</strong> (a load-bearing nanosatellite structure and a two-axis gimbal mechanism), <strong>composite materials</strong> (a biodegradable epoxy-bagasse composite from my B.Tech), and <strong>propulsion</strong> — a solid rocket motor I designed, built, and static-tested myself, redesigning the propellant grain after the first version didn't perform as anticipated.</p>
+        <p>Beyond aerospace systems, I have hands-on fiber composite processing experience across two material systems: <span class="hl">biodegradable epoxy/bagasse composite</span> (B.Tech project) and <span class="hl">carbon fiber composite</span> (TSAW Drones internship). I am also proficient in conventional and CNC machining, including operation of the <strong>CNC MAZAK QTNX3502MU – Quick Turn Nexus 350</strong> multi-axis turning centre, as well as lathe machining.</p>
+        <p>Writing up technical work clearly is a habit, not a new skill — I have <strong>published four times</strong> on propulsion and aerodynamics topics. A thesis on the use of water as a propellant in electric propulsion systems is presently being completed. I'm searching for a position where I can apply this methodical, test-driven, hands-on approach to actual aerospace hardware.</p>
+      </div>
+
+      <div class="telemetry reveal">
+        <div class="telemetry-head">
+          <span>// TELEMETRY</span>
+          <span>LIVE</span>
+        </div>
+        <div class="telemetry-row"><span class="k">Designation</span><span class="v">Aerospace Engineer</span></div>
+        <div class="telemetry-row"><span class="k">Location</span><span class="v">Bologna, IT</span></div>
+        <div class="telemetry-row"><span class="k">Origin</span><span class="v">India</span></div>
+        <div class="telemetry-row"><span class="k">Program</span><span class="v active">MSc Aerospace Eng.</span></div>
+        <div class="telemetry-row"><span class="k">Institution</span><span class="v">Univ. of Bologna</span></div>
+        <div class="telemetry-row"><span class="k">Specialization</span><span class="v">Propulsion</span></div>
+        <div class="telemetry-row"><span class="k">Publications</span><span class="v ok">04</span></div>
+        <div class="telemetry-row"><span class="k">Patents</span><span class="v ok">04</span></div>
+        <div class="telemetry-row"><span class="k">Languages</span><span class="v">EN · HI · IT · ML</span></div>
+        <div class="telemetry-row"><span class="k">Status</span><span class="v active">● ACTIVE</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 02 — Trajectory</div>
+      <h2 class="section-title"><span class="num">02</span>Professional experience</h2>
+      <p class="section-desc">Hands-on roles across R&D, education, and prototyping — from leading aerospace hardware concepts to building rocket hardware with students.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item now reveal">
+        <div class="timeline-date">10/2024 — 02/2026 · Remote / Chennai, IN</div>
+        <div class="timeline-role">Head of R&amp;D</div>
+        <div class="timeline-org"><i class="fa-solid fa-satellite"></i> Aeroin SpaceTech</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Leading development of aerospace hardware concepts, including satellite subsystems and experimental platforms, from design through build and test.</li>
+            <li>Coordinating prototype implementation across a small remote team and preparing technical documentation for others to act on.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">12/2023 — 02/2026 · Remote / Pune, IN</div>
+        <div class="timeline-role">Researcher &amp; Space Tutor</div>
+        <div class="timeline-org"><i class="fa-solid fa-graduation-cap"></i> ESRO MAGICA</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Taught rocketry, astronomy, and cosmology fundamentals to a variety of audiences.</li>
+            <li>Assisted student teams with experimental rocket builds and hardware demonstrations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">06/2023 — 08/2023 · India</div>
+        <div class="timeline-role">R&amp;D Intern</div>
+        <div class="timeline-org"><i class="fa-solid fa-drone"></i> TSAW Drones</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Worked with carbon fiber composite components as part of UAV prototype development, alongside broader prototype validation and system testing.</li>
+            <li>Worked in developing VTOL systems.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">01/2023 — 05/2023 · Delhi, IN</div>
+        <div class="timeline-role">Intern</div>
+        <div class="timeline-org"><i class="fa-solid fa-shield-halved"></i> DRDO</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Short internship in a defence engineering standards environment.</li>
+            <li>Worked on dual gimbal mechanism design.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="patents">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 03 — Intellectual property</div>
+      <h2 class="section-title"><span class="num">03</span>Patents &amp; innovations</h2>
+      <p class="section-desc">Four filed patents spanning precision agriculture UAVs, intelligent helmet safety systems, aerospace-grade motors, and virtual reading projection technology.</p>
+    </div>
+
+    <div class="patents-grid">
+      <div class="patent-card reveal">
+        <div class="patent-head">
+          <div class="patent-icon"><i class="fa-solid fa-seedling"></i></div>
+          <span class="patent-num">CN · 2020110502248</span>
+        </div>
+        <h3 class="patent-title">Agricultural Seeding UAV</h3>
+        <p class="patent-desc">Autonomous UAV system designed for precision agricultural seeding operations — enabling targeted, automated deployment across varied terrain.</p>
+      </div>
+
+      <div class="patent-card reveal">
+        <div class="patent-head">
+          <div class="patent-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+          <span class="patent-num">CN · 202011042992</span>
+        </div>
+        <h3 class="patent-title">Safety System for Vehicle Helmet</h3>
+        <p class="patent-desc">Intelligent integrated safety system for vehicle helmets, combining sensing and protective logic into a single helmet-mounted platform.</p>
+      </div>
+
+      <div class="patent-card reveal">
+        <div class="patent-head">
+          <div class="patent-icon"><i class="fa-solid fa-gears"></i></div>
+          <span class="patent-num">CN · 202111053450</span>
+        </div>
+        <h3 class="patent-title">Ceramic Insulated Brushless DC Motor</h3>
+        <p class="patent-desc">High-performance BLDC motor with ceramic insulation, engineered for aerospace-grade applications demanding thermal resilience and electrical isolation.</p>
+      </div>
+
+      <div class="patent-card reveal">
+        <div class="patent-head">
+          <div class="patent-icon"><i class="fa-solid fa-projections"></i></div>
+          <span class="patent-num">CN · 202011052983</span>
+        </div>
+        <h3 class="patent-title">Portable Projector for Virtual Reading</h3>
+        <p class="patent-desc">Compact projection system engineered for virtual reading applications — bringing immersive, on-demand visual content to any surface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 04 — Build log</div>
+      <h2 class="section-title"><span class="num">04</span>Selected projects</h2>
+      <p class="section-desc">Aerospace hardware built, tested, and refined — from static-tested solid rocket motors to biodegradable composites and antenna gimbal mechanisms.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="project-card reveal" data-img="https://z-cdn-media.chatglm.cn/files/a56cff23-031f-41c5-ad8f-0c8feeee91c1.jpg?auth_key=1887075376-28e7ec771bc44e72bb55ba14cbd5c4ca-0-354330be0c4b274f7933bc996fbbbae8">
+        <div class="project-img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/a56cff23-031f-41c5-ad8f-0c8feeee91c1.jpg?auth_key=1887075376-28e7ec771bc44e72bb55ba14cbd5c4ca-0-354330be0c4b274f7933bc996fbbbae8')">
+          <span class="project-year">2024</span>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">PROPULSION · STATIC TEST</div>
+          <h3 class="project-title">Sugar Rocket Development</h3>
+          <p class="project-desc">Designed, constructed, and statically tested a solid sugar-propellant rocket motor, along with the equipment and test setup needed to record thrust and burn data. The initial propellant grain geometry didn't perform as expected — modified based on post-test data and retested until outcomes matched design intent.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-img="https://z-cdn-media.chatglm.cn/files/a569fd12-5230-46a2-ae90-106bef488dd7.jpeg?auth_key=1887074370-8b02d4ff2c9e466c84f8a1d2f4a23a0e-0-cef76667abb393941265efbc1d3c505f">
+        <div class="project-img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/a569fd12-5230-46a2-ae90-106bef488dd7.jpeg?auth_key=1887074370-8b02d4ff2c9e466c84f8a1d2f4a23a0e-0-cef76667abb393941265efbc1d3c505f')">
+          <span class="project-year">2023</span>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">COMPOSITES · B.TECH PROJECT</div>
+          <h3 class="project-title">Biodegradable Epoxy–Bagasse Composite</h3>
+          <p class="project-desc">Bachelors project developing a biodegradable composite using epoxy resin and bagasse (sugarcane waste fiber). Worked through fiber preparation and resin processing by hand — exploring sustainable alternatives for structural composite materials.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-img="https://z-cdn-media.chatglm.cn/files/44ac518c-2a76-41db-b71c-1b0865f8017e.png?auth_key=1887074370-76b7257c99f847158630d8ff68d26cb0-0-a490b6f830194f4836161a8932585544">
+        <div class="project-img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/44ac518c-2a76-41db-b71c-1b0865f8017e.png?auth_key=1887074370-76b7257c99f847158630d8ff68d26cb0-0-a490b6f830194f4836161a8932585544')">
+          <span class="project-year">2023</span>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">MECHANISM · BUILD</div>
+          <h3 class="project-title">Dual Gimbal Antenna Mechanism</h3>
+          <p class="project-desc">Designed and built a two-axis tracking mechanism, taking it from a CAD concept through to hardware that held pointing accuracy under real motion. Originally prototyped during the DRDO internship.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-img="https://z-cdn-media.chatglm.cn/files/29415dd7-5fa1-4b3c-9223-7870d4a328ec.png?auth_key=1887074370-d10c3737f39f4a5c8cf3c9e2dd680e66-0-e0ab761bbf8e0bf200887733c2c0eab3">
+        <div class="project-img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/29415dd7-5fa1-4b3c-9223-7870d4a328ec.png?auth_key=1887074370-d10c3737f39f4a5c8cf3c9e2dd680e66-0-e0ab761bbf8e0bf200887733c2c0eab3')">
+          <span class="project-year">2023</span>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">STRUCTURES · SATELLITE</div>
+          <h3 class="project-title">Nanosatellite Structural Analysis</h3>
+          <p class="project-desc">Designed the primary load-bearing structure for a small satellite and evaluated it against launch load requirements, comparing material configurations for suitability in launch environments.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-img="https://z-cdn-media.chatglm.cn/files/0720edc5-5376-4623-8a4f-5cb9b7cfa57a.png?auth_key=1887074370-bff464937240490d95ff8101d235eb3c-0-2afd0337618193887bc7931750311149">
+        <div class="project-img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/0720edc5-5376-4623-8a4f-5cb9b7cfa57a.png?auth_key=1887074370-bff464937240490d95ff8101d235eb3c-0-2afd0337618193887bc7931750311149')">
+          <span class="project-year">2022</span>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">CFD · COMBUSTION ANALYSIS</div>
+          <h3 class="project-title">Solid Rocket Motor Flow Analysis</h3>
+          <p class="project-desc">Studied internal flow and combustion gas distribution computationally to understand why some motor geometries run less evenly than others — published at ICFTES 2022.</p>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-img="https://z-cdn-media.chatglm.cn/files/7367bb15-a61e-457e-9592-49bd817e7afd.jpeg?auth_key=1887074370-8c62d6540ead420eac1d7713675a144f-0-a4bd885dc7af2553edc6a45e271eccd8">
+        <div class="project-img" style="background-image:url('https://z-cdn-media.chatglm.cn/files/7367bb15-a61e-457e-9592-49bd817e7afd.jpeg?auth_key=1887074370-8c62d6540ead420eac1d7713675a144f-0-a4bd885dc7af2553edc6a45e271eccd8')">
+          <span class="project-year">2022</span>
+        </div>
+        <div class="project-body">
+          <div class="project-cat">AERODYNAMICS · FLIGHT TEST</div>
+          <h3 class="project-title">RC Aircraft Design &amp; Flight Testing</h3>
+          <p class="project-desc">Designed, built, and flight-tested a remotely controlled aircraft to evaluate aerodynamic stability and control response — from concept to first flight.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 05 — Systems &amp; tooling</div>
+      <h2 class="section-title"><span class="num">05</span>Capabilities</h2>
+      <p class="section-desc">A cross-section of engineering and software competencies — from electric propulsion and composite structures to CNC machining and CFD analysis.</p>
+    </div>
+
+    <div class="skills-wrap">
+      <div class="skill-block reveal">
+        <div class="skill-block-head">
+          <i class="fa-solid fa-microchip"></i>
+          <h3>Engineering</h3>
+        </div>
+        <div class="skill-list">
+          <span class="skill-chip">Electric propulsion systems</span>
+          <span class="skill-chip">Composite structures &amp; materials</span>
+          <span class="skill-chip">Mechanisms design</span>
+          <span class="skill-chip">UAV / drone systems</span>
+          <span class="skill-chip">Fluid power &amp; structural analysis</span>
+          <span class="skill-chip">Plasma physics &amp; global modelling</span>
+          <span class="skill-chip">CFD analysis</span>
+          <span class="skill-chip">Antenna mechanism design</span>
+          <span class="skill-chip">Fiber composite processing <span class="lvl">(hand layup)</span></span>
+          <span class="skill-chip">Biodegradable epoxy/bagasse composites</span>
+          <span class="skill-chip">Carbon fiber composites</span>
+          <span class="skill-chip">CNC machining <span class="lvl">MAZAK QTNX3502MU</span></span>
+          <span class="skill-chip">Lathe machining</span>
+        </div>
+      </div>
+
+      <div class="skill-block reveal">
+        <div class="skill-block-head">
+          <i class="fa-solid fa-code"></i>
+          <h3>Software &amp; Tools</h3>
+        </div>
+        <div class="skill-list">
+          <span class="skill-chip">CATIA V5 <span class="lvl">PROFICIENT · 80 HRS</span></span>
+          <span class="skill-chip">CFD simulation tools</span>
+          <span class="skill-chip">Plasma modelling software</span>
+          <span class="skill-chip">CAD — design &amp; prototyping</span>
+          <span class="skill-chip">SolidWorks</span>
+          <span class="skill-chip">Fusion 360</span>
+          <span class="skill-chip">MATLAB</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">Technical writing &amp; publishing</span>
+          <span class="skill-chip">R&amp;D project leadership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 06 — Research output</div>
+      <h2 class="section-title"><span class="num">06</span>Publications</h2>
+      <p class="section-desc">Four peer-reviewed publications across propulsion, aerodynamics, ballistic tracking, and space resource utilization.</p>
+    </div>
+
+    <div class="pub-list">
+      <a href="https://www.researchgate.net/publication/377478333_Analysis_on_Solid_Rocket_Motor_Using_Computational_Method_for_Uniform_Flow_Field" target="_blank" rel="noopener" class="pub-card reveal">
+        <div class="pub-year">2022<span>ICFTES</span></div>
+        <div>
+          <h3 class="pub-title">Analysis of a Solid Rocket Motor Using a Computational Method for Uniform Flow Field</h3>
+          <div class="pub-venue"><i class="fa-solid fa-book"></i>International Conference on Fluid Thermal and Energy Systems (ICFTES)</div>
+        </div>
+        <div class="pub-action">Read paper <i class="fa-solid fa-arrow-right"></i></div>
+      </a>
+
+      <a href="https://jodac.org/wp-content/uploads/2025/09/JoDaC-9-9-19-23-R1.pdf" target="_blank" rel="noopener" class="pub-card reveal">
+        <div class="pub-year">2025<span>JoDaC</span></div>
+        <div>
+          <h3 class="pub-title">Short Note on Ballistic Tracking Technologies</h3>
+          <div class="pub-venue"><i class="fa-solid fa-book"></i>Journal of Dynamics and Control</div>
+        </div>
+        <div class="pub-action">Read paper <i class="fa-solid fa-arrow-right"></i></div>
+      </a>
+
+      <a href="https://iopscience.iop.org/article/10.1088/1742-6596/2272/1/012003" target="_blank" rel="noopener" class="pub-card reveal">
+        <div class="pub-year">2022<span>IOP</span></div>
+        <div>
+          <h3 class="pub-title">Comparative Study of Double Wedge and Biconvex Airfoils Using CFD</h3>
+          <div class="pub-venue"><i class="fa-solid fa-book"></i>Journal of Physics: Conference Series</div>
+        </div>
+        <div class="pub-action">Read paper <i class="fa-solid fa-arrow-right"></i></div>
+      </a>
+
+      <a href="https://www.researchgate.net/publication/360895801_Asteroid_Mining_Opportunities_and_Challenges" target="_blank" rel="noopener" class="pub-card reveal">
+        <div class="pub-year">2022<span>EIIRMJ</span></div>
+        <div>
+          <h3 class="pub-title">Asteroid Mining: Opportunities and Challenges</h3>
+          <div class="pub-venue"><i class="fa-solid fa-book"></i>EIIRMJ Multidisciplinary Journal</div>
+        </div>
+        <div class="pub-action">Read paper <i class="fa-solid fa-arrow-right"></i></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 07 — Field notes</div>
+      <h2 class="section-title"><span class="num">07</span>Blog &amp; writing</h2>
+      <p class="section-desc">Long-form notes from the workshop, the test stand, and the literature — covering propulsion, composites, UAV development, and the messy realities of building aerospace hardware.</p>
+    </div>
+
+    <div class="blog-empty reveal">
+      <i class="fa-solid fa-pen-ruler"></i>
+      <h3>No posts yet</h3>
+      <p>Field notes are on the way. Check back soon for deep dives into propulsion testing, composite processing, and aerospace hardware builds.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-tag">// 08 — Visual log</div>
+      <h2 class="section-title"><span class="num">08</span>Gallery</h2>
+      <p class="section-desc">Hardware, test rigs, CAD models, and field photos — a visual record of the work behind the write-ups. Click any tile to enlarge.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item big reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/a56cff23-031f-41c5-ad8f-0c8feeee91c1.jpg?auth_key=1887075376-28e7ec771bc44e72bb55ba14cbd5c4ca-0-354330be0c4b274f7933bc996fbbbae8')"
+           data-cap="Sugar rocket motor — on test stand">
+        <div class="gallery-cap"><span class="tag">PROPULSION · HARDWARE</span>Sugar rocket motor — on test stand</div>
+      </div>
+
+      <div class="gallery-item reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/44ac518c-2a76-41db-b71c-1b0865f8017e.png?auth_key=1887074370-76b7257c99f847158630d8ff68d26cb0-0-a490b6f830194f4836161a8932585544')"
+           data-cap="Dual gimbal antenna mechanism — CAD assembly">
+        <div class="gallery-cap"><span class="tag">CAD · MECHANISM</span>Dual gimbal antenna mechanism</div>
+      </div>
+
+      <div class="gallery-item reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/0720edc5-5376-4623-8a4f-5cb9b7cfa57a.png?auth_key=1887074370-bff464937240490d95ff8101d235eb3c-0-2afd0337618193887bc7931750311149')"
+           data-cap="SRM internal flow — CFD velocity field">
+        <div class="gallery-cap"><span class="tag">CFD · SIMULATION</span>SRM internal flow — velocity field</div>
+      </div>
+
+      <div class="gallery-item wide reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/44f246c0-14ac-47ec-883c-c76ae998de20.jpeg?auth_key=1887074370-cc1cbb9753e344238b8decc94d709648-0-56dea17cebe424072ad00bf5751984ee')"
+           data-cap="TSAW Drones — UAV prototype with carbon fiber components">
+        <div class="gallery-cap"><span class="tag">UAV · PROTOTYPE</span>TSAW Drones — UAV prototype</div>
+      </div>
+
+      <div class="gallery-item reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/43c5e8d3-0dbc-4e1a-a031-a5f6750e39df.jpeg?auth_key=1887074370-0cb77cb7f5054187a6b32aeebd183559-0-3a684bb6f7cdd617b7d84e53da9ea2bf')"
+           data-cap="Hydraulic press — composite die setup (LPU/58-109)">
+        <div class="gallery-cap"><span class="tag">COMPOSITES · TOOLING</span>Hydraulic press — composite die</div>
+      </div>
+
+      <div class="gallery-item reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/a569fd12-5230-46a2-ae90-106bef488dd7.jpeg?auth_key=1887074370-8b02d4ff2c9e466c84f8a1d2f4a23a0e-0-cef76667abb393941265efbc1d3c505f')"
+           data-cap="Biodegradable epoxy-bagasse composite sample">
+        <div class="gallery-cap"><span class="tag">MATERIAL · SAMPLE</span>Biodegradable epoxy-bagasse composite</div>
+      </div>
+
+      <div class="gallery-item reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/7367bb15-a61e-457e-9592-49bd817e7afd.jpeg?auth_key=1887074370-8c62d6540ead420eac1d7713675a144f-0-a4bd885dc7af2553edc6a45e271eccd8')"
+           data-cap="RC aircraft — design and flight testing">
+        <div class="gallery-cap"><span class="tag">FLIGHT · TEST</span>RC aircraft — design and flight testing</div>
+      </div>
+
+      <div class="gallery-item wide reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/29415dd7-5fa1-4b3c-9223-7870d4a328ec.png?auth_key=1887074370-d10c3737f39f4a5c8cf3c9e2dd680e66-0-e0ab761bbf8e0bf200887733c2c0eab3')"
+           data-cap="Aerospace systems collage — design, analyze, innovate, realize">
+        <div class="gallery-cap"><span class="tag">CONCEPT · MONTAGE</span>Aerospace systems collage</div>
+      </div>
+
+      <div class="gallery-item reveal"
+           style="background-image:url('https://z-cdn-media.chatglm.cn/files/867d6c11-5448-46f2-b037-3b44b4d8ac62.jpg?auth_key=1887074370-e9733210331345f4824218824c00b8f1-0-815781d99ee0dff1bf2efbe863e0d3b3')"
+           data-cap="Spacecraft exhibit — engineering reference visit">
+        <div class="gallery-cap"><span class="tag">REFERENCE · VISIT</span>Spacecraft exhibit — engineering reference</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center; margin-bottom: 48px; display:flex; flex-direction:column; align-items:center;">
+      <div class="section-tag">// 09 — Contact</div>
+      <h2 class="section-title">Get in touch</h2>
+    </div>
+    
+    <div class="contact-list reveal" style="max-width: 600px; margin: 0 auto;">
+      <a href="mailto:athulkrishnas983@gmail.com" class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <div>
+          <span class="label">Email</span>
+          <span class="val">athulkrishnas983@gmail.com</span>
+        </div>
+      </a>
+      <a href="tel:+393894352270" class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <span class="label">Phone</span>
+          <span class="val">+39 38943 52270</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/athulkrishna-s" target="_blank" rel="noopener" class="contact-item">
+        <i class="fa-brands fa-linkedin-in"></i>
+        <div>
+          <span class="label">LinkedIn</span>
+          <span class="val">/in/athulkrishna-s</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Athulkrishna Sailandrakumar · Aerospace Engineer</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></button>
+  <img id="lightboxImg" src="" alt="enlarged view">
+  <div class="lightbox-cap" id="lightboxCap"></div>
+</div>
+
+<script>
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let stars = [], shootingStars = [];
+
+  function resize(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    stars = [];
+    const count = Math.floor((innerWidth * innerHeight) / 8000);
+    for(let i = 0; i < count; i++){
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.2 + .2,
+        a: Math.random() * .8 + .2,
+        s: Math.random() * .02 + .005,
+        p: Math.random() * Math.PI * 2,
+        c: Math.random() > .85 ? '#00d4ff' : (Math.random() > .9 ? '#ff6b1a' : '#ffffff')
+      });
+    }
+  }
+  resize();
+  addEventListener('resize', resize);
+
+  function spawnShooting(){
+    if(Math.random() < .008 && shootingStars.length < 2){
+      shootingStars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height * .4,
+        vx: -(Math.random() * 6 + 4),
+        vy: Math.random() * 2 + 1,
+        life: 1,
+        len: Math.random() * 80 + 60
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s => {
+      s.p += s.s;
+      const alpha = s.a * (0.6 + 0.4 * Math.sin(s.p));
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = s.c;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
+      if(s.r > 0.9){
+        ctx.globalAlpha = alpha * .3;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 2.5, 0, Math.PI*2);
+        ctx.fill();
+      }
+    });
+
+    spawnShooting();
+    shootingStars = shootingStars.filter(ss => {
+      ss.x += ss.vx;
+      ss.y += ss.vy;
+      ss.life -= .012;
+      if(ss.life <= 0) return false;
+      const grad = ctx.createLinearGradient(ss.x, ss.y, ss.x + ss.len, ss.y - ss.len * (ss.vy/Math.abs(ss.vx)));
+      grad.addColorStop(0, `rgba(255,255,255,${ss.life})`);
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(ss.x, ss.y);
+      ctx.lineTo(ss.x + ss.len, ss.y - ss.len * (ss.vy/Math.abs(ss.vx)));
+      ctx.stroke();
+      return true;
+    });
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  const glow = document.getElementById('cursorGlow');
+  if (!matchMedia('(hover: none)').matches) {
+    addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  } else {
+    glow.style.display = 'none';
+  }
+
+  const nav = document.getElementById('nav');
+  const navLinks = document.getElementById('navLinks');
+  const menuBtn = document.getElementById('menuBtn');
+  addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', scrollY > 50);
+  });
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  function updateClock(){
+    const d = new Date();
+    const utc = d.toISOString().substring(11,19);
+    const el = document.getElementById('clockUTC');
+    if(el) el.innerHTML = 'UTC ' + utc;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCap = document.getElementById('lightboxCap');
+  const lbClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, cap){
+    lbImg.src = src;
+    lbCap.textContent = cap || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const bg = item.style.backgroundImage;
+      const src = bg.slice(5, -2).replace(/["']/g, '');
+      openLightbox(src, item.dataset.cap);
+    });
+  });
+
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', () => {
+      if(card.dataset.img) openLightbox(card.dataset.img, card.querySelector('.project-title').textContent);
+    });
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+  addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
